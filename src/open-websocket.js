@@ -14,7 +14,9 @@ export default url => {
   const pong = () => rws._ws.pong(() => null)
 
   rws.addEventListener('open', () => {
-    rws._ws.on('ping', pong)
+    if (rws._ws.on) {
+      rws._ws.on('ping', pong)
+    }
   })
 
   return rws
